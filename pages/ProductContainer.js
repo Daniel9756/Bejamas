@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import useSWR from "swr";
 import Grid from "@material-ui/core/Grid";
-import Select from "react-select";
 import Sidebar from "./Sidebar";
 import Products from "./Product/Products";
 
@@ -16,6 +13,7 @@ function ProductContainer({ onAdd, setOpen }) {
   const { data } = useSWR("./api/products");
   const [products, setProducts] = useState(data);
   const [sorType, setSorType] = useState("");
+
   const [filterItem, setFilterItem] = useState("");
 
   const filtered = products?.filter((item) => {
@@ -31,25 +29,16 @@ function ProductContainer({ onAdd, setOpen }) {
       return item;
     }
   });
-  console.log(data, "product");
+  console.log(data, "data");
   const classes = useStyles();
-  // const onPriceSort = (e) =>
-  //   products.sort((a, b) => {
-  //     return a.data.price < b.data.price ? 1 : -1;
-  //   });
+  
 console.log(filtered)
   const onSort = filtered?.sort((a, b) => {
     const isReversed = sorType === "asc" ? 1 : -1;
     return isReversed * a.data.category.localeCompare(b.data.category) || "";
   });
 
-  const options = [
-    { value: 50, label: "Less than 50" },
-    { value: 100, label: "Less than 100" },
-    { value: 200, label: "More than 100" },
-  ];
-
-  return (
+   return (
     <>
       <div
         style={{
@@ -101,14 +90,7 @@ console.log(filtered)
             onClick={() => onSort(setSorType("desc"))}
             style={{ cursor: "pointer" }}
           />
-          <h3>Price</h3>
-          {/* <Select
-            options={options}
-            name="price"
-            onChange={(event) =>
-              onPriceSort(setPrice({ value: event.target.value }))
-            }
-          /> */}
+         
         </div>
       </div>
       <Grid
