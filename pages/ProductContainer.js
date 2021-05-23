@@ -17,7 +17,7 @@ function ProductContainer({ onAdd, setOpen }) {
   const [products, setProducts] = useState(data);
   const [sorType, setSorType] = useState("");
   const [filterItem, setFilterItem] = useState("");
-  
+
   const filtered = products?.filter((item) => {
     if (filterItem == "") {
       return item;
@@ -37,7 +37,7 @@ function ProductContainer({ onAdd, setOpen }) {
   //   products.sort((a, b) => {
   //     return a.data.price < b.data.price ? 1 : -1;
   //   });
-
+console.log(filtered)
   const onSort = filtered?.sort((a, b) => {
     const isReversed = sorType === "asc" ? 1 : -1;
     return isReversed * a.data.category.localeCompare(b.data.category) || "";
