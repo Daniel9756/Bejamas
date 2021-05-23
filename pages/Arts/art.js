@@ -15,7 +15,7 @@ function Art({ art, id, onAdd, setOpen }) {
    cartCount.cartDispatch('INCREMENT')
    onAdd(art)
   } 
-  console.log(addItem)
+ 
 
   return (
     <>

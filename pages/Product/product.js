@@ -15,10 +15,11 @@ import PopUp from "../Dropdown";
 const useStyles = makeStyles((theme) => ({
   card: {
     // marginTop: theme.spacing(3),
-    maxWidth: "400px",
+    minWidth: "350px",
     height: "500px",
-    position: "relative",
-    zIndex: 1,
+    margin: 8,
+    marginTop: 15,
+    
   },
   container: {
     justifyContent: "space-between",
@@ -43,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Product({ product, id, onAdd, setOpen }) {
-  // console.log(setOpenPopUp, "product");
+
+
   const classes = useStyles();
   const cartCount = useContext(CartContext);
   const addItems = () => {
@@ -53,7 +55,7 @@ function Product({ product, id, onAdd, setOpen }) {
   };
 
   return (
-    <Container>
+    
       <Card className={classes.card} elevation={0}>
         {product.data.bestseller === true ? (
           <Avatar
@@ -126,7 +128,7 @@ function Product({ product, id, onAdd, setOpen }) {
           ${product.data.price}
         </Typography>
       </Card>
-    </Container>
+   
   );
 }
 

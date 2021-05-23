@@ -6,6 +6,7 @@ import useSWR from "swr";
 import Art from "./art";
 
 export default function Arts({onAdd, setOpen}) {
+  
   const { data: arts } = useSWR("./api/artwork");
 
   console.log(arts);
